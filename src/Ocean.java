@@ -106,7 +106,18 @@ public class Ocean {
 	}
 	
 	boolean shootAt(int row,int column){
-		return false;
+		boolean resp = true;
+		if(ocean[row][column].getShipType()!="empty"){
+			if(ocean[row][column].isSunk()){
+				resp = false;
+			}else{
+				shotsFired++;
+				hitCount++;
+			}
+		}else{
+			resp = false;
+		}
+		return resp;
 	}
 	
 	int getShotsFired(){
@@ -118,7 +129,18 @@ public class Ocean {
 	}
 	
 	boolean isGameOver(){
-		return false;
+		boolean resp = true;
+		for(int i = 0;i<this.ocean.length;i++){
+			for(int j = 0;i<this.ocean[i].length;j++){
+				if(ocean[i][j].getShipType()!="empty"){
+					if(!ocean[i][j].isSunk()){
+						resp = false;
+						return resp;
+					}
+				}
+			}
+		}
+		return resp ;
 	}
 	
 	int getShipsSunk(){

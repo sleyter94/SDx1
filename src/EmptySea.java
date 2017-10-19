@@ -9,6 +9,11 @@ public class EmptySea extends Ship {
 	boolean shootAt(int row,int column){
 		return false;
 	}
+
+	@Override
+	boolean isSunk(){
+		return false;
+	}
 	
 	@Override
 	public String toString(){
